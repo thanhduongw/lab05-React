@@ -34,28 +34,9 @@ const Dashboard = () => {
                     ))}
                 </div>
             </div>
-            <div className="row" style={{ height: "56vh" }}>
-                <div className="row mb-3">
-                    <div className="col-9">
-                        <div className="d-flex align-items-center mb-2">
-                            <img src="../imgs/File text 1.png" alt="" className="me-2" />
-                            <h4 className="fw-bold mb-0">Detailed report</h4>
-                        </div>
-                    </div>
-                    <div className="col-3">
-                        <button className="btn me-2" style={{ color: '#F44B87', borderColor: "#F44B87" }}>
-                            <img src="../imgs/Download.png" alt="" />Import
-                        </button>
-                        <button className="btn btn-hover" style={{ color: '#F44B87', borderColor: "#F44B87" }}>
-                            <img src="../imgs/Move up.png" alt="" />Export
-                        </button>
-                    </div>
-                </div>
-                <div className="row m-1">
-                    <Table data={order} />
-                </div>
+            <div className="row" style={{ height: "64vh" }}>
+                <Table data={order} />
             </div>
-            <div className="row"style={{ height: "8vh" }}></div>
         </>
     );
 };
