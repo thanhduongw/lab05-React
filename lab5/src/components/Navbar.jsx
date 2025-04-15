@@ -20,15 +20,16 @@ const Navbar = () => {
         </div>
         <div className="d-flex flex-column gap-2">
           {menuItems.map((item, index) => (
-            <NavLink
-              to={item.to}
-              key={index}
-              className="text-decoration-none text-secondary"
-            >
-              <div className="d-flex align-items-center gap-2 rounded p-2">
-                <img src={item.icon} alt={item.label} style={{ height: 20 }} />
-                <span>{item.label}</span>
-              </div>
+            <NavLink to={item.to} key={index} className="text-decoration-none">
+              {({ isActive }) => (
+                <div
+                  className={`d-flex align-items-center gap-2 rounded p-2 ${isActive ? 'text-white' : 'text-secondary'}`}
+                  style={isActive ? { backgroundColor: '#F44B87' } : {}}
+                >
+                  <img src={item.icon} alt={item.label} style={{ height: 20 }} />
+                  <span>{item.label}</span>
+                </div>
+              )}
             </NavLink>
           ))}
         </div>
