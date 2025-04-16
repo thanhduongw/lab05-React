@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import EditModal from "./EditModal";
+import AddUser from "../components/AddUser";
+
 
 const Table = ({ data, setData }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [showModal, setShowModal] = useState(false);
+  const [showAddModal, setShowAddModal] = useState(false);
   const [dataUser, setDataUser] = useState({});
   const itemsPerPage = 6;
 
@@ -12,6 +15,11 @@ const Table = ({ data, setData }) => {
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const currentData = data.slice(startIndex, endIndex);
+
+  const handleAddUser = (newUser) => {
+    setData((prevData) => [newUser, ...prevData]);
+  };
+
 
   const getBadgeClasses = (status) => {
     switch (status) {
@@ -61,9 +69,11 @@ const Table = ({ data, setData }) => {
           <button
             className="btn btn-outline"
             style={{ color: "#F44B87", borderColor: "#F44B87" }}
+            onClick={() => setShowAddModal(true)}
           >
             <img src="../imgs/Download.png" alt="Import icon" /> Import
           </button>
+
           <button
             className="btn btn-outline ms-2"
             style={{ color: "#F44B87", borderColor: "#F44B87" }}
@@ -175,6 +185,12 @@ const Table = ({ data, setData }) => {
         dataUser={dataUser}
         handleSave={handleSaveOrder}
       />
+      <AddUser
+        show={showAddModal}
+        handleClose={() => setShowAddModal(false)}
+        handleAddUser={handleAddUser}
+      />
+
     </div>
   );
 };
